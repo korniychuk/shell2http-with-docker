@@ -1,0 +1,16 @@
+language: ruby
+
+git:
+  depth: 1
+
+services:
+  - docker
+
+script:
+  - docker build -t $DOCKER_PRIVATE_REGISTRY/shell2http-with-docker .
+
+deploy:
+  provider: script
+  script: bash docker-push.sh
+  on:
+    branch: master
