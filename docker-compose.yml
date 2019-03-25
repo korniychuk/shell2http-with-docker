@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  shell2http:
+    build: .
+    image: msoap/shell2http
+    command:
+      - "/app/shell2http"
+      - "/"
+      - "/deploy/deploy.sh"
+    ports:
+      - 8000:8080
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./:/deploy"
